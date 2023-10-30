@@ -7,7 +7,7 @@ apidoc.apidoc.url_prefix = "/api"
 app = Flask(__name__)
 api = Api(app)
 
-@api.route('/uso/<string:usoPrincipal>')
+@api.route('/api/uso/<string:usoPrincipal>')
 class uso_principal(Resource):
     @api.doc(params={'usoPrincipal': 'Aceita: Escritorio, Programacao, Jogos, Modelagem3D, CompilacaoEVideoEncoding'})
     def get(self, usoPrincipal):
@@ -15,7 +15,7 @@ class uso_principal(Resource):
         return resultado
 
 
-@api.route('/classificar')
+@api.route('/api/classificar')
 class acharCategoria(Resource):
     @api.doc(params={
         'cpu': 'Aceita: Ryzen3, Ryzen5, Ryzen7, RyzenThreadripper',
