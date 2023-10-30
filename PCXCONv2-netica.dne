@@ -1,0 +1,287 @@
+// ~->[DNET-1]->~
+
+// File created by an unlicensed user using Netica 7.01 on Oct 30, 2023 at 01:05:47 UTC.
+
+bnet PCXCONv2_netica {
+AutoCompile = TRUE;
+autoupdate = TRUE;
+whenchanged = 1698618761;
+
+visual V2 {
+	defdispform = BELIEFBARS;
+	nodelabeling = TITLE;
+	NodeMaxNumEntries = 50;
+	nodefont = font {shape= "Arial"; size= 9;};
+	linkfont = font {shape= "Arial"; size= 9;};
+	ShowLinkStrengths = 1;
+	windowposn = (177, 56, 1531, 712);
+	resolution = 72;
+	drawingbounds = (1323, 720);
+	showpagebreaks = FALSE;
+	usegrid = TRUE;
+	gridspace = (6, 6);
+	NodeSet Node {BuiltIn = 1; Color = 0x00e1e1e1;};
+	NodeSet Nature {BuiltIn = 1; Color = 0x00f8eed2;};
+	NodeSet Deterministic {BuiltIn = 1; Color = 0x00d3caa6;};
+	NodeSet Finding {BuiltIn = 1; Color = 0x00c8c8c8;};
+	NodeSet Constant {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet ConstantValue {BuiltIn = 1; Color = 0x00ffffb4;};
+	NodeSet Utility {BuiltIn = 1; Color = 0x00ffbdbd;};
+	NodeSet Decision {BuiltIn = 1; Color = 0x00dee8ff;};
+	NodeSet Documentation {BuiltIn = 1; Color = 0x00f0fafa;};
+	NodeSet Title {BuiltIn = 1; Color = 0x00ffffff;};
+	NodeSet target {Disabled = 1; Color = 0x00c8c8c8;};
+	PrinterSetting A {
+		margins = (1270, 1270, 1270, 1270);
+		};
+	};
+
+node UsoPrincipal {
+	discrete = TRUE;
+	states = (Escritorio, Programacao, Jogos, Modelagem3D, CompilacaoEVideoEncoding);
+	kind = NATURE;
+	parents = ();
+	ExperBase = 1;
+	whenchanged = 1698593282;
+	belief = (0.2, 0.2, 0.2, 0.2, 0.2);
+	visual V2 {
+		center = (468, 72);
+		height = 1;
+		};
+	};
+
+node Mouse {
+	discrete = TRUE;
+	states = (MousePadaria, Top5DeluxM800PRO, Top4MotospeedDarmosharkM3, Top3AjazzAj139, Top2KysonaM600, Top1DragonFlyVgnF1);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// MousePadaria Top5DeluxM800PRO Top4MotospeedDar Top3AjazzAj139 Top2KysonaM600 Top1DragonFlyVgn  // UsoPrincipal     
+		  (1,           0,           0,           0,           0,           0,            // Escritorio       
+		   0,           0.8,         0.2,         0,           0,           0,            // Programacao      
+		   0,           0.05,        0.1,         0.2,         0.25,        0.4,          // Jogos            
+		   0,           0.4,         0.25,        0.2,         0.1,         0.05,         // Modelagem3D      
+		   0.8,         0.2,         0,           0,           0,           0);           // CompilacaoEVideo ;
+	whenchanged = 1698544939;
+	belief = (0.36, 0.29, 0.11, 0.08, 0.07, 0.09);
+	visual V2 {
+		center = (762, 390);
+		height = 7;
+		};
+	};
+
+node PerifericoAdicional {
+	discrete = TRUE;
+	states = (MesaDigitalizadora, SemPeriferico);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// MesaDigitalizado SemPeriferico  // UsoPrincipal     
+		  (0,           1,            // Escritorio       
+		   0,           1,            // Programacao      
+		   0,           1,            // Jogos            
+		   0.99,        0.01,         // Modelagem3D      
+		   0,           1);           // CompilacaoEVideo ;
+	whenchanged = 1698616835;
+	belief = (0.198, 0.802);
+	visual V2 {
+		center = (582, 240);
+		height = 6;
+		};
+	};
+
+node Monitor {
+	discrete = TRUE;
+	states = (QHD240HzIPS, FHD60hzTN, UHD60hzIPSFoscaC1000P1, UHD60hzIPSBrilhosaC1000P1);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// QHD240HzIPS  FHD60hzTN    UHD60hzIPSFoscaC UHD60hzIPSBrilho  // UsoPrincipal     
+		  (0,           1,           0,           0,            // Escritorio       
+		   0,           1,           0,           0,            // Programacao      
+		   1,           0,           0,           0,            // Jogos            
+		   0,           0,           0.5,         0.5,          // Modelagem3D      
+		   0,           1,           0,           0);           // CompilacaoEVideo ;
+	whenchanged = 1698558239;
+	belief = (0.2, 0.6, 0.1, 0.1);
+	visual V2 {
+		center = (348, 408);
+		height = 10;
+		};
+	};
+
+node Teclado {
+	discrete = TRUE;
+	states = (Membrana, Mecanico);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// Membrana     Mecanico      // UsoPrincipal     
+		  (0.99,        0.01,         // Escritorio       
+		   0.8,         0.2,          // Programacao      
+		   0.1,         0.9,          // Jogos            
+		   0.9,         0.1,          // Modelagem3D      
+		   0.9,         0.1);         // CompilacaoEVideo ;
+	whenchanged = 1698615197;
+	belief = (0.738, 0.262);
+	visual V2 {
+		center = (144, 306);
+		height = 5;
+		};
+	};
+
+node RAM {
+	discrete = TRUE;
+	states = (RAM8GB, RAM16GB, RAM32GB, RAM64GB, RAM128GB);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// RAM8GB       RAM16GB      RAM32GB      RAM64GB      RAM128GB      // UsoPrincipal     
+		  (0.7,         0.3,         0,           0,           0,            // Escritorio       
+		   0.01,        0.3,         0.4,         0.15,        0.14,         // Programacao      
+		   0.05,        0.6,         0.25,        0.05,        0.05,         // Jogos            
+		   0.01,        0.1,         0.25,        0.39,        0.25,         // Modelagem3D      
+		   0.01,        0.1,         0.25,        0.39,        0.25);        // CompilacaoEVideo ;
+	whenchanged = 1698618761;
+	belief = (0.156, 0.28, 0.23, 0.196, 0.138);
+	visual V2 {
+		center = (120, 72);
+		height = 3;
+		};
+	};
+
+node Armazenamento {
+	discrete = TRUE;
+	states = (SSD512GB, SSD1TB, HDD1TB, HDD4TB);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// SSD512GB     SSD1TB       HDD1TB       HDD4TB        // UsoPrincipal     
+		  (0.3,         0,           0.7,         0,            // Escritorio       
+		   0.6,         0.3,         0.1,         0,            // Programacao      
+		   0.3,         0.6,         0.1,         0,            // Jogos            
+		   0.3,         0.7,         0,           0,            // Modelagem3D      
+		   0,           0.2,         0,           0.8);         // CompilacaoEVideo ;
+	whenchanged = 1698613641;
+	belief = (0.3, 0.36, 0.18, 0.16);
+	visual V2 {
+		center = (138, 210);
+		height = 4;
+		};
+	};
+
+node GPU {
+	discrete = TRUE;
+	states = (GPUIntegrada, RTX3050, RTX3060, RTX3070, RTX3080, RTX3090);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// GPUIntegrada RTX3050      RTX3060      RTX3070      RTX3080      RTX3090       // UsoPrincipal     
+		  (1,           0,           0,           0,           0,           0,            // Escritorio       
+		   0.05,        0.45,        0.2,         0.15,        0.1,         0.05,         // Programacao      
+		   0.025,       0.1,         0.3,         0.25,        0.2,         0.125,        // Jogos            
+		   0.01,        0.04,        0.1,         0.15,        0.45,        0.25,         // Modelagem3D      
+		   0.01,        0.04,        0.1,         0.15,        0.45,        0.25);        // CompilacaoEVideo ;
+	whenchanged = 1698618119;
+	belief = (0.219, 0.126, 0.14, 0.14, 0.24, 0.135);
+	visual V2 {
+		center = (984, 78);
+		height = 2;
+		};
+	};
+
+node CPU {
+	discrete = TRUE;
+	states = (Ryzen3, Ryzen5, Ryzen7, RyzenThreadripper);
+	kind = NATURE;
+	chance = CHANCE;
+	parents = (UsoPrincipal);
+	probs = 
+		// Ryzen3       Ryzen5       Ryzen7       RyzenThreadrippe  // UsoPrincipal     
+		  (0.75,        0.2,         0.05,        0,            // Escritorio       
+		   0.01,        0.4,         0.4,         0.19,         // Programacao      
+		   0.01,        0.5,         0.39,        0.1,          // Jogos            
+		   0,           0.2,         0.3,         0.5,          // Modelagem3D      
+		   0,           0,           0.2,         0.8);         // CompilacaoEVideo ;
+	whenchanged = 1698618412;
+	belief = (0.154, 0.26, 0.268, 0.318);
+	visual V2 {
+		center = (846, 210);
+		height = 9;
+		};
+	};
+
+node Fonte {
+	discrete = TRUE;
+	states = (Fonte250W, Fonte350W, Fonte450W, Fonte550W, Fonte650W, Fonte750W, Fonte850W, Fonte950W);
+	kind = NATURE;
+	parents = (GPU, CPU);
+	probs = 
+		// Fonte250W    Fonte350W    Fonte450W    Fonte550W    Fonte650W    Fonte750W    Fonte850W    Fonte950W     // GPU          CPU              
+		  (1,           @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // GPUIntegrada Ryzen3           
+		   @undef,      1,           @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // GPUIntegrada Ryzen5           
+		   @undef,      1,           @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // GPUIntegrada Ryzen7           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // GPUIntegrada RyzenThreadrippe 
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3050      Ryzen3           
+		   @undef,      @undef,      1,           @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3050      Ryzen5           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3050      Ryzen7           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3050      RyzenThreadrippe 
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3060      Ryzen3           
+		   @undef,      @undef,      @undef,      1,           @undef,      @undef,      @undef,      @undef,       // RTX3060      Ryzen5           
+		   @undef,      @undef,      @undef,      1,           @undef,      @undef,      @undef,      @undef,       // RTX3060      Ryzen7           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3060      RyzenThreadrippe 
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3070      Ryzen3           
+		   @undef,      @undef,      @undef,      1,           @undef,      @undef,      @undef,      @undef,       // RTX3070      Ryzen5           
+		   @undef,      @undef,      @undef,      @undef,      1,           @undef,      @undef,      @undef,       // RTX3070      Ryzen7           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3070      RyzenThreadrippe 
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3080      Ryzen3           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3080      Ryzen5           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      1,           @undef,      @undef,       // RTX3080      Ryzen7           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      1,            // RTX3080      RyzenThreadrippe 
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3090      Ryzen3           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,       // RTX3090      Ryzen5           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      1,           @undef,      @undef,       // RTX3090      Ryzen7           
+		   @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      @undef,      1);           // RTX3090      RyzenThreadrippe ;
+	numcases = 
+		                 // GPU          CPU              
+		  (1,            // GPUIntegrada Ryzen3           
+		   0,            // GPUIntegrada Ryzen5           
+		   0,            // GPUIntegrada Ryzen7           
+		   -1,           // GPUIntegrada RyzenThreadrippe 
+		   -1,           // RTX3050      Ryzen3           
+		   -1,           // RTX3050      Ryzen5           
+		   -1,           // RTX3050      Ryzen7           
+		   -1,           // RTX3050      RyzenThreadrippe 
+		   -1,           // RTX3060      Ryzen3           
+		   -1,           // RTX3060      Ryzen5           
+		   -1,           // RTX3060      Ryzen7           
+		   -1,           // RTX3060      RyzenThreadrippe 
+		   -1,           // RTX3070      Ryzen3           
+		   -1,           // RTX3070      Ryzen5           
+		   0,            // RTX3070      Ryzen7           
+		   0,            // RTX3070      RyzenThreadrippe 
+		   0,            // RTX3080      Ryzen3           
+		   0,            // RTX3080      Ryzen5           
+		   0,            // RTX3080      Ryzen7           
+		   0,            // RTX3080      RyzenThreadrippe 
+		   0,            // RTX3090      Ryzen3           
+		   0,            // RTX3090      Ryzen5           
+		   0,            // RTX3090      Ryzen7           
+		   0);           // RTX3090      RyzenThreadrippe ;
+	whenchanged = 1698615160;
+	belief = (0.1811437, 0.09484375, 0.07859375, 0.1733938, 0.07749375, 0.1383438, 0.03099375, 0.2251937);
+	visual V2 {
+		center = (1098, 372);
+		height = 8;
+		};
+	};
+NodeSet target {Nodes = ();};
+ElimOrder = (PerifericoAdicional, Teclado, Monitor, Armazenamento, RAM, Mouse, UsoPrincipal, GPU, CPU, Fonte);
+};
