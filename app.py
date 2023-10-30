@@ -2,6 +2,8 @@ from pcxcon import *
 from flask import Flask, request
 from flask_restx import Resource, Api, apidoc
 
+apidoc.apidoc.url_prefix = "/api"
+
 app = Flask(__name__)
 api = Api(app)
 
