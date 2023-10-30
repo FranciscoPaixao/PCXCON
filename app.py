@@ -8,7 +8,7 @@ api = Api(app)
 
 @api.route('/api/uso/<string:usoPrincipal>')
 class uso_principal(Resource):
-    @api.doc(params={'usoPrincipal': 'Aceita: Escritorio, Programacao, Jogos, Modelagem3D, CompilacaoEVideo'})
+    @api.doc(params={'usoPrincipal': 'Aceita: Escritorio, Programacao, Jogos, Modelagem3D, CompilacaoEVideoEncoding'})
     def get(self, usoPrincipal):
         resultado = inferencia.map_query(['cpu','gpu','ram', 'monitor','armazenamento', 'mouse', 'teclado', 'perifericoadicional'],evidence={'usoprincipal' : usoPrincipal})
         return resultado
@@ -47,4 +47,4 @@ class acharCategoria(Resource):
         return resultado
 
 if __name__ == '__main':
-    app.run(debug=True)
+    app.run(debug=False, Host="0.0.0.0")
