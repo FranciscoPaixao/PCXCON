@@ -14,7 +14,7 @@ O PC-XCON pode ser utilizado no Netica, o arquivo .dne encontra-se na pasta [/pr
 ## Google Colab
 
 Também é possivel utilizar o PC-XCON com o Google Colab.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FranciscoPaixao/PCXCON/blob/main/PC_XCON.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FranciscoPaixao/PCXCON/blob/main/colab/PC_XCON.ipynb)
 
 ## Documentação da API
 ##### A Documentação com o Swagger encontra-se na api: [https://api.pcxcon.lab.dev.br](https://api.pcxcon.lab.dev.br)
