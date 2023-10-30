@@ -14,7 +14,7 @@ class uso_principal(Resource):
         return resultado
 
 
-@api.route('/api/acharCategoria')
+@api.route('/api/classificar')
 class acharCategoria(Resource):
     @api.doc(params={
         'cpu': 'Aceita: Ryzen3, Ryzen5, Ryzen7, RyzenThreadripper',
