@@ -38,7 +38,9 @@ Também é possivel utilizar o PC-XCON com o Google Colab.
 
 
 #### Recomenda as peças e periféricos para o PC  
-
+```http
+  GET /api/uso/{usoprincipal}
+```
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `usoprincipal`      | `string` | **Obrigatório**.  |
