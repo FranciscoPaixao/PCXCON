@@ -1,12 +1,13 @@
 from pcxcon import *
 from flask import Flask, request
-from flask_restx import Resource, Api, fields
+from flask_restx import Resource, Api, apidoc
 
+apidoc.apidoc.url_prefix = "/api"
 
 app = Flask(__name__)
 api = Api(app)
 
-@api.route('/api/uso/<string:usoPrincipal>')
+@api.route('/uso/<string:usoPrincipal>')
 class uso_principal(Resource):
     @api.doc(params={'usoPrincipal': 'Aceita: Escritorio, Programacao, Jogos, Modelagem3D, CompilacaoEVideoEncoding'})
     def get(self, usoPrincipal):
@@ -14,7 +15,7 @@ class uso_principal(Resource):
         return resultado
 
 
-@api.route('/api/classificar')
+@api.route('/classificar')
 class acharCategoria(Resource):
     @api.doc(params={
         'cpu': 'Aceita: Ryzen3, Ryzen5, Ryzen7, RyzenThreadripper',
